@@ -1,7 +1,7 @@
 const messagesData = require("../data/messages");
 
-const getAllMessages = (req, res) => {
-  res.status(200).json({ status: "success", messages: messagesData });
+const getIndex = (req, res) => {
+  res.status(200).render("index", { title: "Mini Message Board" });
 };
 
-module.exports = { getAllMessages };
+module.exports = { getIndex };
