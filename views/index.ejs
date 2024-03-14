@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini Message Board</title>
+    <title><%= locals.title || "Mini message Board" %></title>
   </head>
-  <body></body>
+  <body>
+    <h1>Messages</h1>
+    <ul>
+      <% for (var i = 0; i < messages.length; i++ ) { %>
+      <li>
+        <span> <%= messages[i].username %> </span>
+        <span> <%= messages[i].message %> </span>
+        <span> <%= messages[i].createdAt %> </span>
+      </li>
+      <% } %>
+    </ul>
+    <a href="/messages/new">Add new Message</a>
+  </body>
 </html>

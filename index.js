@@ -1,16 +1,15 @@
 const express = require("express");
-const indexRouter = require("./routes/index.js");
+const messagesRouter = require("./routes/messages.js");
 const app = express();
 const notFoundMiddleware = require("./middleware/notFound.js");
-const ejs = require("ejs");
 
-// app.use(express.static("./public"));
+app.use(express.static("./public"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/", indexRouter);
+app.use("/messages", messagesRouter);
 // not found
 app.use(notFoundMiddleware);
 
