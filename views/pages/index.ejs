@@ -3,19 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
     <title><%= locals.title || "Mini message Board" %></title>
   </head>
   <body>
     <h1>Messages</h1>
     <ul>
       <% for (var i = 0; i < messages.length; i++ ) { %>
-      <li>
-        <span> <%= messages[i].username %> </span>
-        <span> <%= messages[i].message %> </span>
-        <span> <%= messages[i].createdAt %> </span>
+      <li class="flex flex-col gap-2 p-5">
+        <span class="font-bold font-display text-2xl text-purple-500">
+          <%= messages[i].username %>
+        </span>
+        <span class="text-md text-gray-800"> <%= messages[i].message %> </span>
+        <span class="text-sm text-gray-500">
+          <%= messages[i].createdAt %>
+        </span>
       </li>
       <% } %>
     </ul>
-    <a href="/messages/new">Add new Message</a>
+    <a
+      class="rounded-md bg-purple-500 text-gray-50 font-bold px-4 py-1 hover:bg-purple-800 transition-all duration-150"
+      href="/messages/new"
+      >Add new Message</a
+    >
   </body>
 </html>
