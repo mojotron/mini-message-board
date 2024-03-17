@@ -1,9 +1,14 @@
 const messagesData = require("../data/messages");
+const { formatTime } = require("../utils/formatTime");
 
 const getMessagesView = (req, res) => {
+  const modifiedData = messagesData.map((item) => ({
+    ...item,
+    createdAt: formatTime(item.createdAt),
+  }));
   res.status(200).render("pages/index", {
     title: "Mini-Message-Board",
-    messages: messagesData,
+    messages: modifiedData,
   });
 };
 
