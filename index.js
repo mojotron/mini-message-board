@@ -4,13 +4,15 @@ const app = express();
 const notFoundMiddleware = require("./middleware/notFound.js");
 
 app.use(express.static("./public"));
+
 app.set("views", "./views");
 app.set("view engine", "ejs");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/messages", messagesRouter);
-// not found
+
 app.use(notFoundMiddleware);
 
 const PORT = process.env.PORT || 5000;

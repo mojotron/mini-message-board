@@ -3,13 +3,19 @@ const messagesData = require("../data/messages");
 const getMessagesView = (req, res) => {
   res
     .status(200)
-    .render("index", { title: "Mini-Message-Board", messages: messagesData });
+    .render("pages/index", {
+      title: "Mini-Message-Board",
+      messages: messagesData,
+    });
 };
 
 const getMessagesFormView = (req, res) => {
   res
     .status(200)
-    .render("form", { title: "Mini-Message-Board", messages: messagesData });
+    .render("pages/form", {
+      title: "Mini-Message-Board",
+      messages: messagesData,
+    });
 };
 
 const createMessage = (req, res) => {
