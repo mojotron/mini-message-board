@@ -16,7 +16,7 @@ const createMessage = (req, res) => {
   const { username, message } = req.body;
   if (username && message) {
     messagesData.push({ username, message, createdAt: new Date() });
-    return res.status(201).redirect("/");
+    return res.status(201).redirect("/messages");
   }
   res.render("form", { msg: `username and message must be provided` });
 };
