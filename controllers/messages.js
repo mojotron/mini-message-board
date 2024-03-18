@@ -6,17 +6,13 @@ const getMessagesView = (req, res) => {
     ...item,
     createdAt: formatTime(item.createdAt),
   }));
-  res.status(200).render("pages/index", {
-    title: "Mini-Message-Board",
+  res.status(200).render("pages/messages", {
     messages: modifiedData,
   });
 };
 
 const getMessagesFormView = (req, res) => {
-  res.status(200).render("pages/form", {
-    title: "Mini-Message-Board",
-    messages: messagesData,
-  });
+  res.status(200).render("pages/form");
 };
 
 const createMessage = (req, res) => {
@@ -25,7 +21,9 @@ const createMessage = (req, res) => {
     messagesData.push({ username, message, createdAt: new Date() });
     return res.status(201).redirect("/messages");
   }
-  res.render("form", { msg: `username and message must be provided` });
+  res
+    .status(301)
+    .render("pages/form", { msg: `username and message must be provided` });
 };
 
 module.exports = { getMessagesView, getMessagesFormView, createMessage };
