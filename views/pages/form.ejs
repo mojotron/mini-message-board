@@ -52,10 +52,10 @@
       </div>
 
       <button
-        class="text-lg tracking-wide uppercase font-display rounded-md bg-purple-500 text-gray-50 font-bold px-4 py-1 hover:bg-purple-800 transition-all duration-150"
+        class="text-xl tracking-wide uppercase font-display rounded-md bg-purple-500 text-gray-50 font-bold px-4 py-1 hover:bg-purple-800 transition-all duration-150"
         type="submit"
       >
-        Send
+        Create Message
       </button>
     </form>
 
@@ -63,6 +63,7 @@
       <%= locals.msg || ""%>
     </p>
 
-    <%- include("../partials/footer") %>
+    <%- include("../partials/innerLink", {linkText: "all messages", linkTo:
+    "/messages"}) %> <%- include("../partials/footer") %>
   </body>
 </html>
