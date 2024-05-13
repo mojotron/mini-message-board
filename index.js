@@ -20,8 +20,7 @@ app.use("/messages", messagesRouter);
 app.use(notFoundMiddleware);
 
 const PORT = process.env.PORT || 5000;
-const HOSTNAME = "127.0.0.1";
 
-app.listen(PORT, HOSTNAME, () => {
-  console.log(`server listening at ${HOSTNAME}:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`server running http://localhost:${PORT}`);
 });

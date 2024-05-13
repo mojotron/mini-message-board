@@ -25,6 +25,14 @@ Run npm start. The server will be found at [http://localhost:5000]
 
 Server is hosting basic dynamic site.
 
+## Screenshot
+
+![Home page.](/public/screenshots/mini-screen-home.png "This is a sample image.")
+
+![Messages.](/public/screenshots/mini-screen-messages.png "This is a sample image.")
+
+![Form.](/public/screenshots/mini-screen-form.png "This is a sample image.")
+
 ### Server routes:
 
 - /
