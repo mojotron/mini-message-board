@@ -1,5 +1,5 @@
-const messagesData = require("../data/messages");
-const { formatTime } = require("../utils/formatTime");
+import messagesData from "../data/messages.js";
+import { formatTime } from "../utils/formatTime.js";
 
 const getMessagesView = (req, res) => {
   const modifiedData = messagesData.map((item) => ({
@@ -26,4 +26,4 @@ const createMessage = (req, res) => {
     .render("pages/form", { msg: `username and message must be provided` });
 };
 
-module.exports = { getMessagesView, getMessagesFormView, createMessage };
+export { getMessagesView, getMessagesFormView, createMessage };

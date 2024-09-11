@@ -57,4 +57,4 @@ const formatForInputTypeDate = (date) => {
   return `${year}-${month}-${day}`;
 };
 
-module.exports = { formatTime, formatLocalDate, formatForInputTypeDate };
+export { formatTime, formatLocalDate, formatForInputTypeDate };

@@ -1,5 +1,5 @@
 const notFound = (req, res) => {
-  return res.status(404).render('pages/notFound');
+  return res.status(404).render("pages/notFound");
 };
 
-module.exports = notFound;
+export default notFound;
