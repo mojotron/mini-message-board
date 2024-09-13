@@ -1,10 +1,9 @@
 import messagesData from "../data/messages.js";
-import { formatTime } from "../utils/formatTime.js";
 
 const getMessagesView = (req, res) => {
   const modifiedData = messagesData.map((item) => ({
     ...item,
-    createdAt: formatTime(item.createdAt),
+    createdAt: formatDistance(item.createdAt, new Date()),
   }));
   res.status(200).render("pages/messages", {
     messages: modifiedData,
