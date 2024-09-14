@@ -1,27 +1,31 @@
-<%- include("../partials/head") %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Mini Message Board | learn node and express</title>
+  </head>
   <body
     class="flex flex-col gap-5 items-center py-8 px-2 bg-gray-100 w-[100vw] h-[100vh]"
   >
-    <%- include("../partials/mainHeading", {mainHeading: "messages"})%>
-
+    <%- include('../partials/header', { activePage: "messages"}) %>
+    <!-- -->
+    <% if(locals.messages) { %>
     <ul class="p-5 w-full flex flex-col gap-5 items-center">
-      <% for (var i = 0; i < messages.length; i++ ) { %>
-      <li
-        class="flex flex-col gap-2 p-3 border-l-4 border-purple-500 bg-purple-100 w-full sm:w-[600px]"
-      >
-        <span class="font-bold font-display text-2xl text-purple-500">
-          <%= messages[i].username %>
-        </span>
-        <span class="text-md text-gray-700"> <%= messages[i].message %> </span>
-        <span class="text-sm text-gray-500 ml-auto">
-          <%= messages[i].createdAt %>
-        </span>
-      </li>
-      <% } %>
+      <% messages.forEach(msg => { %>
+      <!--  -->
+      <%- include("../partials/messageCard", {message: msg}) %>
+      <!--  -->
+      <% }); %>
     </ul>
-
+    <% } else { %>
+    <p>no messages</p>
+    <% } %>
+    <!--  -->
     <%- include('../partials/innerLink', {linkText:"add new message",
-    linkTo:"/messages/new"})%> <%- include("../partials/innerLink",
-    {linkText:"homepage", linkTo:"/"}) %> <%- include('../partials/footer') %>
+    linkTo:"/messages/new"}) %>
+    <!--  -->
+    <%- include('../partials/footer') %>
   </body>
 </html>

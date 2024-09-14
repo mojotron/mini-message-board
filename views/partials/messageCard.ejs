@@ -1,0 +1,15 @@
+<li
+  class="flex justify-between items-center p-3 border-l-4 border-purple-500 bg-purple-100 w-full sm:w-[600px] shadow-lg shadow-purple-200 rounded-sm hover:bg-purple-200 hover:ring hover:ring-purple-300"
+>
+  <div class="flex flex-col gap-2">
+    <span class="font-bold font-display text-2xl text-purple-500">
+      <%= message.title %>
+    </span>
+    <span class="font-bold font-display text-md text-gray-500">
+      <%= message.createdAt %>
+    </span>
+  </div>
+
+  <%- include("../partials/innerLink", {linkText:"open", linkTo:"/messages/" +
+  message.id}) %>
+</li>

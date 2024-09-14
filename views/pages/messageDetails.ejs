@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Mini Message Board | learn node and express</title>
+  </head>
+  <body
+    class="flex flex-col gap-5 items-center py-8 px-2 bg-gray-100 w-[100vw] h-[100vh]"
+  >
+    <%- include('../partials/header', { activePage: ""}) %>
+    <!-- -->
+    <article
+      class="w-full max-w-[480px] flex flex-col items-center gap-4 bg-purple-100 p-4 rounded-sm shadow-md shadow-purple-300"
+    >
+      <h2 class="uppercase font-display font-bold text-3xl text-purple-600">
+        <%= message.title %>
+      </h2>
+
+      <div class="text-lg text-gray-600">
+        <p><%= message.text %></p>
+      </div>
+
+      <div>
+        <ul class="flex justify-center items-center gap-2">
+          <a href="/messages/<%= message.id %>/update"><li>update</li></a>
+          <a href="/messages/<%= message.id %>/delete"><li>delete</li></a>
+          <a href="/messages/"><li>all messages</li></a>
+        </ul>
+      </div>
+    </article>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

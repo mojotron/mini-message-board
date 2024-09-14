@@ -1,26 +1,25 @@
 import { formatDistance } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
+import messages from "../data/messages.js";
 
-const storage = () => {
-  const _readData = () => {
-    const data = localStorage.getItem("mini-messages");
-    return data ? JSON.parse(data) : [];
-  };
-
-  const _writeData = (messages) => {
-    localStorage.setItem("mini-messages", JSON.stringify(messages));
-  };
-
-  const messages = _readData();
+const storage = (initialData) => {
+  const messages = initialData;
 
   const getMessages = () => {
     return messages.map((msg) => ({
       ...msg,
-      createdAt: formatDistance(msg.createdAt, new Date()),
+      createdAt: formatDistance(msg.createdAt, new Date(), { addSuffix: true }),
     }));
   };
 
-  const getMessage = (id) => {};
+  const getMessage = (id) => {
+    const msg = messages.find((msg) => msg.id === id);
+    if (!msg) return {};
+    return {
+      ...msg,
+      cratedAt: formatDistance(msg.createdAt, new Date(), { addSuffix: true }),
+    };
+  };
 
   const createMessage = (title, body) => {
     const id = uuidv4();
@@ -41,6 +40,6 @@ const storage = () => {
   };
 };
 
-const messagesStorage = storage();
+const messagesStorage = storage(messages);
 
 export default messagesStorage;

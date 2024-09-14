@@ -1,12 +1,16 @@
-import messagesData from "../data/messages.js";
+import messagesStorage from "../storage/messagesStorage.js";
 
-const getMessagesView = (req, res) => {
-  const modifiedData = messagesData.map((item) => ({
-    ...item,
-    createdAt: formatDistance(item.createdAt, new Date()),
-  }));
+const getAllMessagesView = (req, res) => {
   res.status(200).render("pages/messages", {
-    messages: modifiedData,
+    messages: messagesStorage.getMessages(),
+  });
+};
+
+const getSingleMessageView = (req, res) => {
+  const { messageId } = req.params;
+
+  res.status(200).render("pages/messageDetails", {
+    message: messagesStorage.getMessage(messageId),
   });
 };
 
@@ -27,4 +31,9 @@ const createMessage = (req, res) => {
     .render("pages/form", { msg: `username and message must be provided` });
 };
 
-export { getMessagesView, getMessagesFormView, createMessage };
+export {
+  getAllMessagesView,
+  getSingleMessageView,
+  getMessagesFormView,
+  createMessage,
+};
