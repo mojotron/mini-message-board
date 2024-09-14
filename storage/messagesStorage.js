@@ -21,10 +21,9 @@ const storage = (initialData) => {
     };
   };
 
-  const createMessage = (title, body) => {
+  const createMessage = (title, text) => {
     const id = uuidv4();
-    const messages = push({ id, title, body, createdAt: new Date() });
-    _writeData(messages);
+    messages.push({ id, title, text, createdAt: new Date() });
   };
 
   const updateMessage = (id) => {};

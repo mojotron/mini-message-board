@@ -621,6 +621,10 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -660,6 +664,10 @@ video {
 }
 .tracking-wider{
   letter-spacing: 0.05em;
+}
+.text-error{
+  --tw-text-opacity: 1;
+  color: rgb(211 44 50 / var(--tw-text-opacity));
 }
 .text-gray-50{
   --tw-text-opacity: 1;
@@ -726,6 +734,10 @@ video {
 .hover\:bg-purple-800:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(107 33 168 / var(--tw-bg-opacity));
+}
+.hover\:text-purple-400:hover{
+  --tw-text-opacity: 1;
+  color: rgb(192 132 252 / var(--tw-text-opacity));
 }
 .hover\:text-purple-600:hover{
   --tw-text-opacity: 1;

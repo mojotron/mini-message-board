@@ -42,6 +42,7 @@ module.exports = {
         900: "#78350f",
         950: "#451a03",
       },
+      error: "#d32c32",
     },
     fontSize: {
       xs: "12px",

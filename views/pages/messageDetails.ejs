@@ -18,15 +18,27 @@
         <%= message.title %>
       </h2>
 
-      <div class="text-lg text-gray-600">
+      <div class="text-lg text-gray-600 py-4">
         <p><%= message.text %></p>
       </div>
 
       <div>
-        <ul class="flex justify-center items-center gap-2">
-          <a href="/messages/<%= message.id %>/update"><li>update</li></a>
-          <a href="/messages/<%= message.id %>/delete"><li>delete</li></a>
-          <a href="/messages/"><li>all messages</li></a>
+        <ul
+          class="flex justify-center items-center gap-2 font-display text-purple-600 text-lg font-bold"
+        >
+          <a
+            class="hover:text-purple-400"
+            href="/messages/<%= message.id %>/update"
+            ><li>update</li></a
+          >
+          <a
+            class="hover:text-purple-400"
+            href="/messages/<%= message.id %>/delete"
+            ><li>delete</li></a
+          >
+          <a class="hover:text-purple-400" href="/messages/"
+            ><li>all messages</li></a
+          >
         </ul>
       </div>
     </article>

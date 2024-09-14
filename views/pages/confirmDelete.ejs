@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Mini Message Board | learn node and express</title>
+  </head>
+  <body
+    class="flex flex-col gap-5 items-center py-8 px-2 bg-gray-100 w-[100vw] h-[100vh]"
+  >
+    <%- include('../partials/header', { activePage: "homepage"}) %>
+
+    <div class="text-lg text-gray-600 text-center space-y-4 p-8">
+      <h2>Are you sure you want to delete message?</h2>
+      <div>
+        <%- include('../partials/innerLink', {linkText:"messages",
+        linkTo:"/messages"})%>
+        <!--  -->
+        <%- include('../partials/innerLink', {linkText:"messages",
+        linkTo:"/messages"})%>
+      </div>
+
+      <p>small web app created with node.js, express, ejs and tailwind css</p>
+      <p>create, read, update and delete messages stored in memory</p>
+    </div>
+
+    <%- include('../partials/innerLink', {linkText:"messages",
+    linkTo:"/messages"})%> <%- include('../partials/footer') %>
+  </body>
+</html>

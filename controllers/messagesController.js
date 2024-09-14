@@ -1,12 +1,13 @@
+import { matchedData, validationResult } from "express-validator";
 import messagesStorage from "../storage/messagesStorage.js";
 
-const getAllMessagesView = (req, res) => {
+const getAllMessages = (req, res) => {
   res.status(200).render("pages/messages", {
     messages: messagesStorage.getMessages(),
   });
 };
 
-const getSingleMessageView = (req, res) => {
+const getSingleMessage = (req, res) => {
   const { messageId } = req.params;
 
   res.status(200).render("pages/messageDetails", {
@@ -14,26 +15,48 @@ const getSingleMessageView = (req, res) => {
   });
 };
 
-const getMessagesFormView = (req, res) => {
-  res.status(200).render("pages/form");
+const getCreateMessage = (req, res) => {
+  res.status(200).render("pages/messageForm", {
+    title: "Create New Message",
+    values: {
+      title: "",
+      text: "",
+    },
+  });
 };
 
-const createMessage = (req, res) => {
-  const { username, message } = req.body;
+const postCreateMessage = (req, res) => {
+  const errors = validationResult(req);
 
-  if (username && message) {
-    messagesData.push({ username, message, createdAt: new Date() });
-    return res.status(201).redirect("/messages");
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    return res.status(400).render("pages/messageForm", {
+      title: "Create New Message",
+      errors: errors.array(),
+      values: {
+        title: req.body.title || "",
+        text: req.body.text || "",
+      },
+    });
   }
 
-  res
-    .status(301)
-    .render("pages/form", { msg: `username and message must be provided` });
+  const { title, text } = matchedData(req);
+  messagesStorage.createMessage(title, text);
+
+  return res.status(201).redirect("/messages");
 };
 
+const getDeleteMessage = (req, res) => {
+  res.status(200).render("pages/confirmDelete");
+};
+
+const postDeleteMessage = (req, res) => {};
+
 export {
-  getAllMessagesView,
-  getSingleMessageView,
-  getMessagesFormView,
-  createMessage,
+  getAllMessages,
+  getSingleMessage,
+  getCreateMessage,
+  postCreateMessage,
+  getDeleteMessage,
+  postDeleteMessage,
 };
