@@ -27,15 +27,20 @@ Server is hosting basic dynamic site.
 
 ## Screenshot
 
-![Home page.](/public/screenshots/mini-screen-home.png "This is a sample image.")
-
 ![Messages.](/public/screenshots/mini-screen-messages.png "This is a sample image.")
 
 ![Form.](/public/screenshots/mini-screen-form.png "This is a sample image.")
+
+![Messages details.](/public/screenshots/mini-screen-message-details.png "This is a sample image.")
+
+![Confirm box.](/public/screenshots/mini-screen-confirm.png "This is a sample image.")
 
 ### Server routes:
 
 - /
 - /messages
+- /messages/:messageId
 - /messages/new
+- /messages/:messageId/delete
+- /messages/:messageId/update
 - /\* (\* means any other route, returning 404 page)
