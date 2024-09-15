@@ -1,13 +1,21 @@
-<%- include("../partials/head") %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Mini Message Board | learn node and express</title>
+  </head>
   <body
     class="flex flex-col gap-5 items-center py-8 px-2 bg-gray-100 w-[100vw] h-[100vh]"
   >
-    <%- include("../partials/mainHeading", {mainHeading: "404 Page Not Found"})
-    %>
-    
-    <p class="text-gray-500 text-lg">You are looking for resources that does not exist!</p>
-    
-    <%- include("../partials/innerLink", {linkText:"homepage", linkTo:"/"})
-    %> <%- include("../partials/footer") %>
+    <%- include('../partials/header', { activePage: ""}) %>
+
+    <p class="text-gray-500 text-lg">
+      You are looking for resources that does not exist!
+    </p>
+
+    <%- include("../partials/innerLink", {linkText:"homepage", linkTo:"/"}) %>
+    <%- include("../partials/footer") %>
   </body>
 </html>

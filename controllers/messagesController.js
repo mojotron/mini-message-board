@@ -17,7 +17,9 @@ const getSingleMessage = (req, res) => {
 
 const getCreateMessage = (req, res) => {
   res.status(200).render("pages/messageForm", {
-    title: "Create New Message",
+    headerText: "Create New Message",
+    buttonText: "Create Message",
+    action: "/messages/new",
     values: {
       title: "",
       text: "",
@@ -29,9 +31,10 @@ const postCreateMessage = (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    console.log(errors);
     return res.status(400).render("pages/messageForm", {
-      title: "Create New Message",
+      headerText: "Create New Message",
+      buttonText: "Create Message",
+      action: "/messages/new",
       errors: errors.array(),
       values: {
         title: req.body.title || "",
@@ -47,10 +50,54 @@ const postCreateMessage = (req, res) => {
 };
 
 const getDeleteMessage = (req, res) => {
-  res.status(200).render("pages/confirmDelete");
+  const { messageId } = req.params;
+  res.status(200).render("pages/confirmDelete", {
+    message: messagesStorage.getMessage(messageId),
+  });
 };
 
-const postDeleteMessage = (req, res) => {};
+const postDeleteMessage = (req, res) => {
+  const { messageId } = req.params;
+  messagesStorage.deleteMessage(messageId);
+  res.status(200).redirect("/messages");
+};
+
+const getUpdateMessage = (req, res) => {
+  const { messageId } = req.params;
+  const msg = messagesStorage.getMessage(messageId);
+  res.status(200).render("pages/messageForm", {
+    headerText: `Update ${msg.title} Message`,
+    buttonText: "Update Message",
+    action: `/messages/${messageId}/update`,
+    values: {
+      title: msg.title,
+      text: msg.text,
+    },
+  });
+};
+
+const postUpdateMessage = (req, res) => {
+  const { messageId } = req.params;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("", {
+      headerText: `Update ${req.body.title} Message`,
+      buttonText: "Update Message",
+      action: `/messages/${messageId}/update`,
+      errors: errors.array(),
+      values: {
+        title: req.body.title || "",
+        text: req.body.text || "",
+      },
+    });
+  }
+
+  const { text, title } = matchedData(req);
+
+  messagesStorage.updateMessage(messageId, text, title);
+
+  res.status(200).redirect(`/messages/${messageId}`);
+};
 
 export {
   getAllMessages,
@@ -59,4 +106,6 @@ export {
   postCreateMessage,
   getDeleteMessage,
   postDeleteMessage,
+  getUpdateMessage,
+  postUpdateMessage,
 };
