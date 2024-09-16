@@ -78,9 +78,11 @@ const getUpdateMessage = (req, res) => {
 
 const postUpdateMessage = (req, res) => {
   const { messageId } = req.params;
+
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
-    return res.status(400).render("", {
+    return res.status(400).render("pages/messageForm", {
       headerText: `Update ${req.body.title} Message`,
       buttonText: "Update Message",
       action: `/messages/${messageId}/update`,
