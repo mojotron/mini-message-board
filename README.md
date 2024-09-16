@@ -1,5 +1,7 @@
 # Mini Message Board
 
+Live 👉[preview](https://tortoiseshell-denim-lilac.glitch.me/) of the project, hosted by Glitch.
+
 This project is part of [The Odin Project](https://www.theodinproject.com/lessons/nodejs-mini-message-board) curriculum.
 
 Goal of this project is to create interactive web app using node and express.
