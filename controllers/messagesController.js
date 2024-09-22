@@ -1,5 +1,6 @@
 import { matchedData, validationResult } from "express-validator";
 import messagesStorage from "../storage/messagesStorage.js";
+import {} from "../db/queries.js";
 
 const getAllMessages = (req, res) => {
   res.status(200).render("pages/messages", {
