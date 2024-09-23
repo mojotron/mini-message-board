@@ -1,5 +1,6 @@
 import url from "node:url";
 import path from "node:path";
+import "dotenv/config";
 import express from "express";
 import routes from "./routes/index.js";
 import notFoundMiddleware from "./middleware/notFound.js";
