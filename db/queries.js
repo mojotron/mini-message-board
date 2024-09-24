@@ -2,7 +2,10 @@ import pool from "./pool.js";
 
 const getMessages = async () => {
   try {
-    //
+    const { rows } = await pool.query(
+      "SELECT * FROM messages ORDER BY created_at"
+    );
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -16,9 +19,9 @@ const getMessage = async () => {
   }
 };
 
-const insertMessage = async () => {
+const insertMessage = async (title, text) => {
   try {
-    //
+    await pool.query("INSERT INTO messages (title)", [title, text]);
   } catch (error) {
     throw error;
   }

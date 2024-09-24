@@ -1,11 +1,23 @@
 import { matchedData, validationResult } from "express-validator";
 import messagesStorage from "../storage/messagesStorage.js";
-import {} from "../db/queries.js";
+import { getMessages } from "../db/queries.js";
+import { formatDistance } from "date-fns";
 
-const getAllMessages = (req, res) => {
-  res.status(200).render("pages/messages", {
-    messages: messagesStorage.getMessages(),
-  });
+const getAllMessages = async (req, res) => {
+  try {
+    const messages = await getMessages();
+    res.status(200).render("pages/messages", {
+      messages: messages.map((msg) => ({
+        ...msg,
+        createdAt: formatDistance(msg.created_at, new Date(), {
+          addSuffix: true,
+        }),
+      })),
+    });
+  } catch (error) {
+    // TODO better message
+    res.json({ ...error });
+  }
 };
 
 const getSingleMessage = (req, res) => {
