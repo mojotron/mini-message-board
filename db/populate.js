@@ -4,11 +4,13 @@ import pg from "pg";
 const { Client } = pg;
 
 const SQL = `
+DROP TABLE IF EXISTS messages;
+
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  title TEXT,
-  text TEXT,
-  created_at TIMESTAMP
+  title TEXT NOT NULL,
+  text TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL
 );
 
 INSERT INTO messages (title, text, created_at)
