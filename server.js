@@ -4,6 +4,7 @@ import "dotenv/config";
 import express from "express";
 import routes from "./routes/index.js";
 import notFoundMiddleware from "./middleware/notFound.js";
+import errorMiddleware from "./middleware/errorMiddleware.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 // error handler
 app.use(notFoundMiddleware);
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log(`server running at port ${PORT}`);

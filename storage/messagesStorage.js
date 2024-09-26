@@ -1,3 +1,10 @@
+// This module is not part of this project anymore, left here for legacy.
+// It was used instead of database to create in memory storage for message
+// CRUDE operations.
+// How to use it: import it to message controller as default import and use
+// methods instead of database. Storage is factory function for creating
+// instance of storage object.
+
 import { formatDistance } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 import messages from "../data/messages.js";
