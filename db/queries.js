@@ -32,7 +32,7 @@ const insertMessage = async (title, text) => {
   const timestamp = new Date();
   try {
     await pool.query(
-      "INSERT INTO messages (title, text, created_at) VALUES ($1, $2, $3)",
+      "INSERT INTO messages (id, title, text, created_at) VALUES (uuid_generate_v4(), $1, $2, $3)",
       [title, text, timestamp]
     );
   } catch (error) {

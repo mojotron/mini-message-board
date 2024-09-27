@@ -78,8 +78,7 @@ const getDeleteMessage = async (req, res, next) => {
 const postDeleteMessage = async (req, res, next) => {
   try {
     const { messageId } = req.params;
-    console.log(messageId);
-    await deleteMessage(parseInt(messageId));
+    await deleteMessage(messageId);
     return res.status(200).redirect("/messages");
   } catch (error) {
     return next(error);
