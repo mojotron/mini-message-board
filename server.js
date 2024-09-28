@@ -3,7 +3,7 @@ import path from "node:path";
 import "dotenv/config";
 import express from "express";
 import routes from "./routes/index.js";
-import notFoundMiddleware from "./middleware/notFound.js";
+import notFoundMiddleware from "./middleware/notFoundMiddleware.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
 
 const __filename = url.fileURLToPath(import.meta.url);

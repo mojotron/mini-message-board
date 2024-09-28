@@ -11,9 +11,10 @@
   >
     <%- include('../partials/header', { activePage: ""}) %>
 
-    <p class="text-gray-500 text-lg">
-      You are looking for resources that does not exist!
-    </p>
+    <h2 class="pt-6 font-display text-3xl text-purple-600 uppercase font-bold">
+      <%= header %>
+    </h2>
+    <p class="text-gray-500 text-lg"><%= message %></p>
 
     <%- include("../partials/innerLink", {linkText:"homepage", linkTo:"/"}) %>
     <%- include("../partials/footer") %>
