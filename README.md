@@ -12,12 +12,17 @@ Goal of this project is to create interactive web app using node and express.
 - Express
 - EJS
 - Tailwind
+- PostgreSQL with Neon PostgreSQL Platform
 
 ### Installing
 
 1. Clone or fork this repo
-2. cd into the mini-messages-board directory (where this README is located).
-3. Run npm install
+2. Run npm install
+3. cd into the mini-messages-board directory (where this README is located).
+4. Create .env file and PORT for server port add POSTGRESQL_URI for variable with your postgresql connection link
+5. run populate.js script with npm run db:populate
+6. run project with npm run dev
+7. visit http://localhost:5000 and have fun
 
 ### Starting the server
 
